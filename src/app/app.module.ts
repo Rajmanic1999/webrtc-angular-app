@@ -13,14 +13,27 @@ import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CallService } from './call.service';
+import { DoctorComponent } from './doctor/doctor.component';
+import { PatientComponent } from './patient/patient.component';
+import { HomeComponent } from './home/home.component';
+import { Dialog2Component } from './dialog2/dialog2.component';
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CallInfoDialogComponents
+    CallInfoDialogComponents,
+    DoctorComponent,
+    PatientComponent,
+    HomeComponent,
+    Dialog2Component
   ],
   imports: [
+    MatIconModule,
+    MatTooltipModule,
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,

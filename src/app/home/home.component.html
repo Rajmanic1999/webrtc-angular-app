@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row p-2">
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+      <button mat-raised-button color="primary" class="m-2" [routerLink]="['/doctor']">Doctor</button>
+    </div>
+    <div class="col-md-4">
+      <button mat-raised-button class="m-2" [routerLink]="['/patient']">Patient</button>
+    </div>
+
+    <!-- <button mat-raised-button color="warn" class="m-2" [disabled]="!(isCallStarted$ | async)" (click)="endCall()">End Call</button> -->
+  </div>
+  <!-- <div class="row">
+    <div class="col text-center">
+      <div id="video-wrapper">
+        <video #remoteVideo id="remote-video" poster="./assets/video-placeholder.jpg" autoplay playsinline></video>
+        <video #localVideo id="local-video" autoplay playsinline [muted]=true></video>
+      </div>
+    </div>
+  </div> -->
+</div>

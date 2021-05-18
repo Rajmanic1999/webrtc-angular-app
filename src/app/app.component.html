@@ -1,8 +1,37 @@
 <div class="container-fluid">
   <div class="row p-2">
-    <button mat-raised-button color="primary" class="m-2" [disabled]="isCallStarted$ | async" (click)="showModal(false)">Start Call</button>
-    <button mat-raised-button class="m-2" [disabled]="isCallStarted$ | async" (click)="showModal(true)">Join Call</button>
-    <button mat-raised-button color="warn" class="m-2" [disabled]="!(isCallStarted$ | async)" (click)="endCall()">End Call</button>
+    <button mat-mini-fab color="primary" class="m-2" [disabled]="isCallStarted$ | async" (click)="showModal(false)" matTooltip="Start Call">
+      <mat-icon>video_call</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" class="m-2" [disabled]="isCallStarted$ | async" (click)="showModal(true)" matTooltip="Join Call">
+      <mat-icon>add</mat-icon><mat-icon>video_call</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="warn" class="m-2" [disabled]="!(isCallStarted$ | async)" (click)="endCall()" matTooltip="End Call">
+      <mat-icon color="light"> call_end</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="light" class="m-2" (click)="local_mute()" >
+      <mat-icon color="warn" *ngIf="callService.local_mic_switch==true" matTooltip="Turn Off Mic">mic_off</mat-icon>
+      <mat-icon color="light" *ngIf="callService.local_mic_switch!=true" matTooltip="Turn On Mic">mic</mat-icon>
+    </button>
+
+    &nbsp;&nbsp;
+
+    <button mat-mini-fab color="light" class="m-2" (click)="local_video()" >
+      <mat-icon color="warn" *ngIf="callService.local_video_switch==true" matTooltip="Turn Off Video">videocam_off</mat-icon>
+      <mat-icon color="light" *ngIf="callService.local_video_switch!=true" matTooltip="Turn On Video">videocam</mat-icon>
+    </button>
+
+    <!-- {{participation | json }} -->
+    <div *ngFor="let data of participation">
+      <a (click)="sendinvite(data)">
+        <span style="font-weight: 600;">{{data.name}}</span> &nbsp; &nbsp;
+        <span>{{data.admit}}</span>
+      </a>
+      <br>
+    </div>
   </div>
   <div class="row">
     <div class="col text-center">
@@ -13,3 +42,4 @@
     </div>
   </div>
 </div>
+<!-- <router-outlet></router-outlet> -->
